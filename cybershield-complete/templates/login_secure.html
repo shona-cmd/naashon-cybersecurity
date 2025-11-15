@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cybersec-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Login to CyberShield</h1>
+        <form method="post">
+            {{ form.csrf_token }}
+            <label for="username">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul>
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br><br>
+            <label for="password">Password:</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <ul>
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br><br>
+            <input type="submit" value="Login">
+        </form>
+        <a href="/">Back to Homepage</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/cybersec-cursor.js') }}"></script>
+</body>
+</html>
